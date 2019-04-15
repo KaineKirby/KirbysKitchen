@@ -1,6 +1,9 @@
 package android.project.kirbyskitchen;
 
+import android.content.Intent;
 import android.os.Message;
+import android.project.kirbyskitchen.Login.LoginActivity;
+import android.project.kirbyskitchen.Login.RegisterActivity;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -62,6 +65,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_user_creation:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserCreationFragment()).commit();
                 break;
+            case R.id.nav_logout:
+                Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(loginIntent);
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

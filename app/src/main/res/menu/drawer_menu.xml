@@ -20,6 +20,10 @@
             android:id="@+id/nav_user_creation"
             android:icon="@drawable/ic_users"
             android:title="User Creations"/>
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="Logout"/>
 
     </group>
 </menu>

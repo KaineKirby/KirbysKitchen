@@ -1,9 +1,7 @@
 package android.project.kirbyskitchen;
 
 import android.content.Intent;
-import android.os.Message;
 import android.project.kirbyskitchen.Login.LoginActivity;
-import android.project.kirbyskitchen.Login.RegisterActivity;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,7 +10,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -57,8 +54,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
                 break;
             case R.id.nav_restaurant:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RestaurantFragment()).commit();
-                break;
+                Intent restaurantIntent = new Intent(MainActivity.this, RestaurantActivity.class);
+                startActivity(restaurantIntent);
             case R.id.nav_recipe:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RecipeFragment()).commit();
                 break;

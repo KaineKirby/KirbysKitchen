@@ -20,12 +20,14 @@
         android:layout_gravity="center"
         android:paddingTop="8dp"
         android:text="Kirby's Kitchen"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/black" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="austin.kirby293@topper.wku.edu"/>
+        android:text="austin.kirby293@topper.wku.edu"
+        android:textColor="@color/black" />
 
 </LinearLayout>

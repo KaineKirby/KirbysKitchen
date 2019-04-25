@@ -42,6 +42,7 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".RestaurantActivity" android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".RecipeActivity" android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/addMenuBtn"
+        android:icon="@drawable/ic_add"
+        android:title="addContact"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/logoutBtn"
+        android:icon="@drawable/ic_action_name"
+        android:title="logout"
+        app:showAsAction="always" />
+
+</menu>

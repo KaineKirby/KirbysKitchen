@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class RestaurantActivity extends AppCompatActivity implements OnMapReadyCallback{
+public class RestaurantActivity extends AppCompatActivity implements OnMapReadyCallback {
     //pulling the value for the id of the current contact
 
     private GoogleMap mMap;
@@ -28,7 +28,7 @@ public class RestaurantActivity extends AppCompatActivity implements OnMapReadyC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_restaurant);
+        setContentView(R.layout.activity_restaurant);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);

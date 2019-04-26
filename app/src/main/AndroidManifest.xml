@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="android.project.kirbyskitchen">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -36,13 +35,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login.LoginActivity" android:parentActivityName=".Login.RegisterActivity"></activity>
+        <activity
+            android:name=".Login.LoginActivity"
+            android:parentActivityName=".Login.RegisterActivity"></activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".RestaurantActivity" android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".RecipeActivity" android:parentActivityName=".MainActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".RestaurantActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".RecipeActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".Recipe.AddRecipeActivity"
+            android:parentActivityName=".RecipeActivity"></activity>
     </application>
 
 </manifest>

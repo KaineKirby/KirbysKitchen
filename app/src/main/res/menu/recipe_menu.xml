@@ -7,10 +7,4 @@
         android:icon="@drawable/ic_add"
         android:title="addContact"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/logoutBtn"
-        android:icon="@drawable/ic_action_name"
-        android:title="logout"
-        app:showAsAction="always" />
-
 </menu>

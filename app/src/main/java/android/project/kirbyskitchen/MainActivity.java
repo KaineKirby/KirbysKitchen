@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_restaurant:
                 Intent restaurantIntent = new Intent(MainActivity.this, RestaurantActivity.class);
                 startActivity(restaurantIntent);
+                break;
             case R.id.nav_recipe:
                 Intent recipeIntent = new Intent(MainActivity.this, RecipeActivity.class);
                 startActivity(recipeIntent);
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_logout:
                 Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(loginIntent);
+                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

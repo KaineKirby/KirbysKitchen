@@ -3,6 +3,7 @@ package android.project.kirbyskitchen;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.project.kirbyskitchen.Restaurant.GetNearbyRestaurantsActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -24,6 +25,8 @@ public class RestaurantActivity extends AppCompatActivity implements OnMapReadyC
 
     private GoogleMap mMap;
     String address = "Sydney";
+    int PROXIMITY_RADIUS = 10000;
+    double lat, lon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,29 @@ public class RestaurantActivity extends AppCompatActivity implements OnMapReadyC
         onMapReady(mMap);
     }
 
+    public void getRestaurants(View v) {
+        mMap.clear();
+        String restaurant = "restaurant";
+        String url = getURL(lat, lon, restaurant);
+        Object dataTransfer[] = new Object[2];
+        dataTransfer[0] = mMap;
+        dataTransfer[1] = url;
+
+        GetNearbyRestaurantsActivity getNearbyRestaurants = new GetNearbyRestaurantsActivity();
+        getNearbyRestaurants.execute(dataTransfer);
+        Toast.makeText(RestaurantActivity.this, "Displaying Nearby Restaurants", Toast.LENGTH_LONG).show();
+    }
+    private String getURL(double lat, double lon, String nearbyRestaurant) {
+        StringBuilder googlePlaceURL = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+        googlePlaceURL.append("location=" + lat + "," + lon);
+        googlePlaceURL.append("&radius=" + PROXIMITY_RADIUS);
+        googlePlaceURL.append("&type=" + nearbyRestaurant);
+        googlePlaceURL.append("&sensor=true");
+        googlePlaceURL.append("&key=" + "AIzaSyB3x0yfyG1jCTi_eytKgaRi0skJVGRt6XI");
+        System.out.println("LAT: " + lat + " LONG: " + lon);
+        System.out.println(googlePlaceURL.toString());
+        return googlePlaceURL.toString();
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -65,6 +91,8 @@ public class RestaurantActivity extends AppCompatActivity implements OnMapReadyC
                 //if the address is valid and can be found proceed with showing it on the google api
             } else {
                 Address currAddress = add.get(0);
+                lat = currAddress.getLatitude();
+                lon = currAddress.getLongitude();
                 LatLng currLocation = new LatLng(currAddress.getLatitude(), currAddress.getLongitude());
 
                 mMap.addMarker(new MarkerOptions().position(currLocation).title(address));

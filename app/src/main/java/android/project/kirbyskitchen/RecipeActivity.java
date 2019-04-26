@@ -3,6 +3,7 @@ package android.project.kirbyskitchen;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.project.kirbyskitchen.Recipe.AddRecipeActivity;
 import android.project.kirbyskitchen.Recipe.DatabaseRecipeActivity;
 import android.project.kirbyskitchen.Recipe.Recipe;
 import android.project.kirbyskitchen.Recipe.RecipeListAdapter;
@@ -26,85 +27,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeActivity extends AppCompatActivity {
-    private ListView recipesList;
+    private ListView recipesListView;
     private DatabaseRecipeActivity recipeDatabase;
+    public List<Recipe> recipesList;
     //private Button add;
-    private List<Recipe> recipes;
     Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_recipe);
 
         context = this;
         recipeDatabase = new DatabaseRecipeActivity(context);
 
-        recipesList = findViewById(R.id.recipesList);
-
-        recipes = new ArrayList<>();
-        recipes = recipeDatabase.retrieveRecipeList();
+        recipesListView = findViewById(R.id.recipesList);
 
         //Create sample recipes
-        Recipe pizza = new Recipe("Pepperoni",
-                "Makes 6 servings (serving size: 1 slice)",
+        if(recipeDatabase.countRecipes() == 0) {
+            Recipe pizza = new Recipe("Pepperoni Pizza",
+                    "\nMakes 6 servings (serving size: 1 slice)",
 
-                "1 cup tomato-and-basil pasta sauce, " +
-                "1 (10-oz.) package prebaked whole wheat thin Italian pizza crust," +
-                " 1/4 cup turkey pepperoni slices (about 24), " +
-                "1 1/2 cups (6oz.) part-skim mozzarella cheese",
+                    "\n1 cup tomato-and-basil pasta sauce,\n" +
+                            "1 (10-oz.) package prebaked whole wheat thin Italian pizza crust,\n" +
+                            "1/4 cup turkey pepperoni slices (about 24),\n" +
+                            "1 1/2 cups (6oz.) part-skim mozzarella cheese",
 
-                "Step 1: Spoon tomato-and-basil pasta sauce evenly over crust," +
-                        " leaving a 1-inch border around edges. Top with half of " +
-                        "pepperoni slices. Sprinkle with cheese. " +
-                        "Top with remaining pepperoni." +
-                "Step 2: Bake pizza at 450° directly on oven rack 11 to 12 minutes " +
-                        "or until crust is golden and cheese is melted. Cut into 6 slices." +
-                        " Serve immediately.",
-                "Pizza cutter, Pizza pan, and traditional oven");
-        recipeDatabase.add(pizza);
-        recipes = recipeDatabase.retrieveRecipeList();
-
-
-        RecipeListAdapter adapter = new RecipeListAdapter(this, R.layout.adapter_view_layout, (ArrayList<Recipe>) recipes);
-        recipesList.setAdapter(adapter);
-
-        //Create arrays to hold the values of the recipes
-        final Integer[] recipeIDs = new Integer[recipes.size()];
-        final String[] recipeNames = new String[recipes.size()];
-        final String[] recipeYields = new String[recipes.size()];
-        final String[] recipeIngredients = new String[recipes.size()];
-        final String[] recipeDirections = new String[recipes.size()];
-        final String[] recipeEquipment = new String[recipes.size()];
-
-        //populate arrays
-        for(int i = 0; i < recipes.size(); i++) {
-            recipeIDs[i] = recipes.get(i).getId();
-
-            recipeNames[i] = recipes.get(i).getName();
-            recipeYields[i] = recipes.get(i).getYield();
-            recipeIngredients[i] = recipes.get(i).getIngredients();
-            recipeDirections[i] = recipes.get(i).getDirections();
-            recipeEquipment[i] = recipes.get(i).getEquipment();
+                    "\nStep 1: Spoon tomato-and-basil pasta sauce evenly over crust,\n" +
+                            "leaving a 1-inch border around edges. Top with half of " +
+                            "pepperoni slices. Sprinkle with cheese. " +
+                            "Top with remaining pepperoni.\n" +
+                            "Step 2: Bake pizza at 450° directly on oven rack 11 to 12 minutes " +
+                            "or until crust is golden and cheese is melted. Cut into 6 slices." +
+                            " Serve immediately.",
+                    "\nPizza cutter, Pizza pan, and traditional oven");
+            recipeDatabase.add(pizza);
         }
+        recipesList = recipeDatabase.retrieveRecipeList();
 
         //Create an adapter that handles showing each recipe's information
-//        ArrayAdapter adapter = new ArrayAdapter(context, android.R.layout.simple_list_item_2, android.R.id.text1, recipeNames) {
-//            @Override
-//            public View getView(int position, View convertView, ViewGroup parent) {
-//                View view = super.getView(position, convertView, parent);
-//                TextView text1 = (TextView) view.findViewById(android.R.id.text1);
-//                TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-//
-//                text1.setText(recipeNames[position]);
-//                text2.setText("Phone: " + recipeYields[position] + "\nAddress: " + recipeDirections[position] + "\nEmail: " + recipeEquipment[position]);
-//                return view;
-//            }
-//        };
-//        recipesList.setAdapter(adapter);
+        RecipeListAdapter adapter = new RecipeListAdapter(this, R.layout.adapter_view_layout, recipesList);
+        recipesListView.setAdapter(adapter);
 
         //Passing values to next activity if a modify is performed
-        recipesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        recipesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -126,9 +92,8 @@ public class RecipeActivity extends AppCompatActivity {
                 Intent addIntent = new Intent(context, AddRecipeActivity.class);
                 startActivity(addIntent);
                 return true;
-            case R.id.logoutBtn:
-                finish();
-                System.exit(0);
+            case android.R.id.home:
+                onBackPressed();
                 return true;
         }
         return true;

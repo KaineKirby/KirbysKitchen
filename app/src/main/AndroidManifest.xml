@@ -50,6 +50,9 @@
         <activity
             android:name=".Recipe.AddRecipeActivity"
             android:parentActivityName=".RecipeActivity"></activity>
+        <activity
+            android:name=".UserCreationActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

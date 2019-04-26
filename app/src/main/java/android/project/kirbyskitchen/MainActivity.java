@@ -2,7 +2,6 @@ package android.project.kirbyskitchen;
 
 import android.content.Intent;
 import android.project.kirbyskitchen.Login.LoginActivity;
-import android.project.kirbyskitchen.Recipe.Recipe;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(recipeIntent);
                 break;
             case R.id.nav_user_creation:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserCreationFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserCreationActivity()).commit();
                 break;
             case R.id.nav_logout:
                 Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);

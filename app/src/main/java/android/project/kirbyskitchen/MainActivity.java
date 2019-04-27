@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(recipeIntent);
                 break;
             case R.id.nav_user_creation:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserCreationActivity()).commit();
+                Intent userIntent = new Intent(MainActivity.this, UserCreationActivity.class);
+                startActivity(userIntent);
                 break;
             case R.id.nav_logout:
                 Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);

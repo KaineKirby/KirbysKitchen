@@ -63,7 +63,7 @@ public class RestaurantActivity extends AppCompatActivity implements OnMapReadyC
         googlePlaceURL.append("&radius=" + PROXIMITY_RADIUS);
         googlePlaceURL.append("&type=" + nearbyRestaurant);
         googlePlaceURL.append("&sensor=true");
-        googlePlaceURL.append("&key=" + "AIzaSyB3x0yfyG1jCTi_eytKgaRi0skJVGRt6XI");
+        googlePlaceURL.append("&key=" + "AIzaSyDIxGOlBr-eLVvhu94Ci43O6_FmCPohPiQ");
         System.out.println("LAT: " + lat + " LONG: " + lon);
         System.out.println(googlePlaceURL.toString());
         return googlePlaceURL.toString();

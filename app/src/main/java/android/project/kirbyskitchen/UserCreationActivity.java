@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class UserCreationActivity extends AppCompatActivity {
+    //creating variables for the camera request
     private static final int CAMERA_REQUEST = 1000;
     private static final int CAMERA_REQUEST2 = 1001;
     ImageView imageView;

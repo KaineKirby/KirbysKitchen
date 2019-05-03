@@ -1,5 +1,5 @@
 package android.project.kirbyskitchen.Recipe;
-
+//creating recipe object
 public class Recipe {
     int id;
     String name, yield, ingredients,  directions, equipment;

@@ -30,7 +30,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".Login.RegisterActivity">
+        <activity android:name=".Login.RegisterActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,22 +39,28 @@
         </activity>
         <activity
             android:name=".Login.LoginActivity"
-            android:parentActivityName=".Login.RegisterActivity"></activity>
+            android:parentActivityName=".Login.RegisterActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".RestaurantActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".RecipeActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Recipe.AddRecipeActivity"
-            android:parentActivityName=".RecipeActivity"></activity>
+            android:parentActivityName=".RecipeActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".UserCreationActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
